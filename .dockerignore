@@ -1,0 +1,8 @@
+# Metals
+.metals/
+.bloop/
+.ammonite/
+metals.sbt
+
+# sbt
+target/
