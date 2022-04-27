@@ -4,7 +4,7 @@
 
 - OpenJDK 1.8.0_312
 - Scala 2.12.15
-- gramine 1.0 described by [this Dockerfile][gramine-Dockerfile]
+- gramine [86f0d3f][gramine-rev] described by [this Dockerfile][gramine-Dockerfile]
 
 ## Problem reproduction
 
@@ -31,4 +31,5 @@ With errors going as
 [P1:T1:] error: Error during shim_init() in init_important_handles (-2)
 ```
 
-[gramine-Dockerfile]: https://github.com/sammyne/ghcr.io/blob/main/gramine/1.0/ubuntu20.04/Dockerfile
+[gramine-Dockerfile]: https://github.com/sammyne/ghcr.io/blob/main/gramine/86f0d3f/ubuntu20.04/Dockerfile
+[gramine-rev]: https://github.com/gramineproject/gramine/commit/86f0d3f047567670dab5f8b39e4a9b9e5db97020

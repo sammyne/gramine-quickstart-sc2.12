@@ -17,9 +17,7 @@
 ################################# CONSTANTS ###################################
 ARCH_LIBDIR ?= /lib/$(shell $(CC) -dumpmachine)
 
-# Relative path to Graphene root
-GRAMINE_DIR = ../..
-SGX_SIGNER_KEY ?= $(GRAMINE_DIR)/Pal/src/host/Linux-SGX/signer/enclave-key.pem
+SGX_SIGNER_KEY ?= ~/.config/gramine/enclave-key.pem
 
 ifeq ($(DEBUG),1)
 GRAMINE_LOG_LEVEL = debug

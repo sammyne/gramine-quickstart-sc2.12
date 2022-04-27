@@ -1,36 +1,15 @@
-loader.preload = "file:{{ gramine.libos }}"
 libos.entrypoint = "{{ entrypoint }}"
+
+loader.entrypoint = "file:{{ gramine.libos }}"
 loader.env.LD_LIBRARY_PATH = "/lib:{{ arch_libdir }}:/usr/{{ arch_libdir }}"
 loader.insecure__use_cmdline_argv = true
 loader.log_level = "{{ log_level }}"
 
-# for eventfd test
-sys.insecure__allow_eventfd = true
-
-fs.mount.graphene_lib.type = "chroot"
-fs.mount.graphene_lib.path = "/lib"
-fs.mount.graphene_lib.uri = "file:{{ gramine.runtimedir() }}"
-
-fs.mount.host_lib.type = "chroot"
-fs.mount.host_lib.path = "{{ arch_libdir }}"
-fs.mount.host_lib.uri = "file:{{ arch_libdir }}"
-
-fs.mount.host_usr_lib.type = "chroot"
-fs.mount.host_usr_lib.path = "/usr/{{ arch_libdir }}"
-fs.mount.host_usr_lib.uri = "file:/usr/{{ arch_libdir }}"
-
-fs.mount.bin.type = "chroot"
-fs.mount.bin.path = "/bin"
-fs.mount.bin.uri = "file:/bin"
-
-fs.mount.devkmsg.type = "chroot"
-fs.mount.devkmsg.path = "/dev/kmsg"
-fs.mount.devkmsg.uri = "dev:/dev/kmsg"
-
 sgx.trusted_files = [
+  "file:{{ entrypoint }}",
+  "file:{{ gramine.libos }}",
   "file:{{ gramine.runtimedir() }}/",
   "file:/usr/local/{{ arch_libdir }}/", 
-  "file:{{ entrypoint }}",
 
   "file:{{ java_home }}/lib/",
 
@@ -40,3 +19,28 @@ sgx.trusted_files = [
 sgx.thread_num = 64
 sgx.enclave_size = "16G"
 sgx.nonpie_binary = true
+
+[[fs.mount]]
+type = "chroot"
+path = "/lib"
+uri  = "file:{{ gramine.runtimedir() }}"
+
+[[fs.mount]]
+type = "chroot"
+path = "{{ arch_libdir }}"
+uri  = "file:{{ arch_libdir }}"
+
+[[fs.mount]]
+type = "chroot"
+path = "/usr/{{ arch_libdir }}"
+uri  = "file:/usr/{{ arch_libdir }}"
+
+[[fs.mount]]
+type = "chroot"
+path = "/bin"
+uri  = "file:/bin"
+
+[[fs.mount]]
+type = "chroot"
+path = "/dev/kmsg"
+uri  = "dev:/dev/kmsg"
