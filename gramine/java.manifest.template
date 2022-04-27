@@ -42,5 +42,15 @@ uri  = "file:/bin"
 
 [[fs.mount]]
 type = "chroot"
-path = "/dev/kmsg"
-uri  = "dev:/dev/kmsg"
+path = "{{ entrypoint }}"
+uri  = "file:{{ entrypoint }}"
+
+[[fs.mount]]
+type = "chroot"
+path = "/usr/local/{{ arch_libdir }}"
+uri  = "file:/usr/local/{{ arch_libdir }}"
+
+[[fs.mount]]
+type = "chroot"
+path = "{{ java_home }}/lib/"
+uri  = "file:{{ java_home }}/lib/"
