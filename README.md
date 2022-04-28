@@ -4,7 +4,7 @@
 
 - OpenJDK 1.8.0_312
 - Scala 2.12.15
-- gramine [86f0d3f][gramine-rev] described by [this Dockerfile][gramine-Dockerfile]
+- Gramine [86f0d3f][gramine-rev] described by [this Dockerfile][gramine-Dockerfile]
 
 ## Problem reproduction
 
