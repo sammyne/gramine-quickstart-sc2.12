@@ -3,15 +3,17 @@ libos.entrypoint = "{{ entrypoint }}"
 loader.entrypoint = "file:{{ gramine.libos }}"
 loader.env.LD_LIBRARY_PATH = "/lib:{{ arch_libdir }}:/usr/{{ arch_libdir }}"
 loader.insecure__use_cmdline_argv = true
-loader.log_level = "{{ log_level }}"
+#loader.log_level = "{{ log_level }}"
+loader.log_level = "debug"
 
 sgx.trusted_files = [
   "file:{{ entrypoint }}",
   "file:{{ gramine.libos }}",
   "file:{{ gramine.runtimedir() }}/",
   "file:/usr/local/{{ arch_libdir }}/", 
+  "file:/usr/{{ arch_libdir }}/", 
 
-  "file:{{ java_home }}/lib/",
+  "file:{{ java_home }}/",
 
   "file:hello-world-assembly-1.0.jar",
 ]
@@ -52,5 +54,5 @@ uri  = "file:/usr/local/{{ arch_libdir }}"
 
 [[fs.mount]]
 type = "chroot"
-path = "{{ java_home }}/lib/"
-uri  = "file:{{ java_home }}/lib/"
+path = "{{ java_home }}"
+uri  = "file:{{ java_home }}"
