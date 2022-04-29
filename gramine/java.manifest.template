@@ -10,7 +10,7 @@ sgx.trusted_files = [
   "file:{{ entrypoint }}",
   "file:{{ gramine.libos }}",
   "file:{{ gramine.runtimedir() }}/",
-  "file:/usr/local/{{ arch_libdir }}/", 
+  "file:{{ arch_libdir }}/", 
   "file:/usr/{{ arch_libdir }}/", 
 
   "file:{{ java_home }}/",
@@ -22,37 +22,37 @@ sgx.thread_num = 64
 sgx.enclave_size = "16G"
 sgx.nonpie_binary = true
 
-[[fs.mount]]
+[[fs.mounts]]
 type = "chroot"
 path = "/lib"
 uri  = "file:{{ gramine.runtimedir() }}"
 
-[[fs.mount]]
+[[fs.mounts]]
 type = "chroot"
 path = "{{ arch_libdir }}"
 uri  = "file:{{ arch_libdir }}"
 
-[[fs.mount]]
+[[fs.mounts]]
 type = "chroot"
 path = "/usr/{{ arch_libdir }}"
 uri  = "file:/usr/{{ arch_libdir }}"
 
-[[fs.mount]]
+[[fs.mounts]]
 type = "chroot"
 path = "/bin"
 uri  = "file:/bin"
 
-[[fs.mount]]
+[[fs.mounts]]
 type = "chroot"
 path = "{{ entrypoint }}"
 uri  = "file:{{ entrypoint }}"
 
-[[fs.mount]]
+[[fs.mounts]]
 type = "chroot"
 path = "/usr/local/{{ arch_libdir }}"
 uri  = "file:/usr/local/{{ arch_libdir }}"
 
-[[fs.mount]]
+[[fs.mounts]]
 type = "chroot"
 path = "{{ java_home }}"
 uri  = "file:{{ java_home }}"

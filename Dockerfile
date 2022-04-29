@@ -42,6 +42,7 @@ WORKDIR /gramine
 
 COPY --from=builder /usr/local/bin/gramine-sgx /usr/local/bin/gramine-sgx
 COPY --from=builder /usr/local/lib/x86_64-linux-gnu /usr/local/lib/x86_64-linux-gnu
+COPY --from=builder /usr/lib/x86_64-linux-gnu/libz.so* /usr/lib/x86_64-linux-gnu/
 
 COPY --from=builder /output/* ./
 
